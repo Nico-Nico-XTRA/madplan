@@ -1,0 +1,9 @@
+body {
+	padding: 150px;
+	color: red;
+}
+
+div#global{
+	padding: 20px;
+	background-color: #FFFFA0;	
+}
