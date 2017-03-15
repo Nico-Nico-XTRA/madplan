@@ -1,9 +1,14 @@
 body {
 	padding: 150px;
-	color: red;
+	color: black;
 }
 
 div#global{
 	padding: 20px;
-	background-color: #FFFFA0;	
+	background-color: #FFFFC0;	
+	border: 2px solid black;
+}
+
+a {
+	color: 6C0CE8;
 }

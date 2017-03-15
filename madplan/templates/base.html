@@ -3,8 +3,12 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>Plan</title>
 	<link rel="stylesheet" href="{% static 'css/style.css' %}">
+	<title>
+		{% block title %}
+			Madplan
+		{% endblock title %}
+	</title>
 </head>
 <body>
 	<div id="global">
@@ -13,11 +17,18 @@
 				<li><a href="{% url 'home' %}">Home</a></li>
 				<li><a href="{% url 'about' %}">About</a></li>
 				<li><a href="{% url 'contact' %}">Contact</a></li>
+				{% if user.is_authenticated %}
+					<li><a href="{% url 'auth_logout' %}">Logout</a></li>
+				{% else %}
+					<li><a href="{% url 'auth_login' %}">Login</a></li>
+					<li><a href="{% url 'registration_register' %}">Register</a></li>
+				{% endif %}
 
 			</ul>
 		</header>
 		<h1>
 			{% block header %}
+				welcome!
 			{% endblock header %}
 		</h1>
 		<p>{% block content %}{% endblock content %}</p>

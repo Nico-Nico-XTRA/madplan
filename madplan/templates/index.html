@@ -1,9 +1,18 @@
 {% extends 'base.html' %}
 
 {% block header %}
-	Hello world!
+	Hello world - {{ block.super }}
 {% endblock header %}
 
 {% block content %}
-	...and this is all you need to know of Hello World! (btw the number is {{ number }}. And it's name is {{ name }}.)
+	{% block model_loop %}
+		{% for dish in dishes %}
+			<h2>
+				<a href="{% url 'dish_detail' slug=dish.slug %}">
+					{{ dish.name }}
+				</a>
+			</h2>
+			<p>{{ dish.description }}</p>
+		{% endfor %}
+	{% endblock model_loop %}
 {% endblock content %}
