@@ -7,5 +7,11 @@
 {% block content %}
 	<h2>{{ dish.name }}</h2>
 	<p>{{ dish.description }}</p>
-	<a href="{% url 'edit_dish' slug=dish.slug %}">Rediger opskrift</a>
+	<p>User: {{ user }}</p>
+	{% if user == dish.user %}
+		<p>
+			<a href="{% url 'edit_dish' slug=dish.slug %}">Rediger opskrift</a>
+		</p>
+	{% endif %}
+	Created by {{ dish.user }}
 {% endblock content %}
