@@ -88,3 +88,15 @@ def create_dish(request):
 	return render(request, 'dishes/create_dish.html', {
 		'form': form,	
 		})
+
+def browse_by_name(request, initial=None):
+    if initial:
+        dishes = Dish.objects.filter(name__istartswith=initial)
+        dishes = dishes.order_by('name')
+    else:
+        dishes = Dish.objects.all().order_by('name')
+
+    return render(request, 'search/search.html', {
+        'dishes': dishes,
+        'initial': initial,
+    })

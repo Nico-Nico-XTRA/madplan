@@ -12,3 +12,7 @@ div#global{
 a {
 	color: 6C0CE8;
 }
+
+a.active {
+	font-size: 25px;
+}

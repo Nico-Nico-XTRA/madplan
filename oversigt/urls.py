@@ -21,6 +21,7 @@ from django.contrib.auth.views import (
 	password_reset_confirm,
 	password_reset_complete
 	)
+from django.views.generic import RedirectView
 
 from madplan import views
 from madplan.backends import MyRegistrationView
@@ -32,9 +33,14 @@ urlpatterns = [
     url(r'^about/$', views.about, name="about"),
     url(r'^contact/$', views.contact, name="contact"),
 
+    url(r'^dishes/$', RedirectView.as_view(pattern_name='browse', permanent=True)),
     url(r'^dishes/(?P<slug>[-\w]+)/$', views.dish_detail, name='dish_detail'),
     url(r'^dishes/(?P<slug>[-\w]+)/edit/$', views.edit_dish, name='edit_dish'),
     
+    url(r'^browse/$', RedirectView.as_view(pattern_name='browse', permanent=True)),
+    url(r'^browse/name/$', views.browse_by_name, name='browse'),
+    url(r'^browse/name/(?P<initial>[-\w]+)/$', views.browse_by_name, name='browse_by_name'),
+
     # the new password reset URLs
     url(r'^accounts/password/reset/$', 
         password_reset,
