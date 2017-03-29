@@ -15,3 +15,4 @@ snowballstemmer==1.2.1
 Sphinx==1.5.2
 sphinx-intl==0.9.5
 hellowebapp-deploy
+psycopg2==2.6.1
